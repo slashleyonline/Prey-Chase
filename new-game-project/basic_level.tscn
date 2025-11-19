@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7j81jvofvdop"]
+[gd_scene load_steps=4 format=3 uid="uid://c7j81jvofvdop"]
 
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://Sprite-0001.png" id="1_a53fa"]
+[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://predator.tscn" id="2_m3wy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(88, 88)
@@ -64,3 +65,6 @@ texture = ExtResource("1_a53fa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle4"]
 position = Vector2(44, 44)
 shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Predator" parent="." instance=ExtResource("2_m3wy8")]
+position = Vector2(143, 296)

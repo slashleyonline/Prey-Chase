@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7j81jvofvdop"]
+
+[ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://Sprite-0001.png" id="1_a53fa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
+size = Vector2(88, 88)
+
+[node name="BasicLevel" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+modulate = Color(0.41568628, 0.37254903, 0.25882354, 1)
+position = Vector2(577.25, 326.75)
+scale = Vector2(1155.5, 654.5)
+texture = ExtResource("1_a53fa")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(221, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/Obstacle"]
+position = Vector2(43.75, 43.75)
+scale = Vector2(88.5, 88.5)
+texture = ExtResource("1_a53fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(809, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/Obstacle2"]
+position = Vector2(43.75, 43.75)
+scale = Vector2(88.5, 88.5)
+texture = ExtResource("1_a53fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle2"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle3" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(809, 381)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/Obstacle3"]
+position = Vector2(43.75, 43.75)
+scale = Vector2(88.5, 88.5)
+texture = ExtResource("1_a53fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle3"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle4" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(223, 381)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/Obstacle4"]
+position = Vector2(43.75, 43.75)
+scale = Vector2(88.5, 88.5)
+texture = ExtResource("1_a53fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle4"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")

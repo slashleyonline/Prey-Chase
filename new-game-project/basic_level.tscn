@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7j81jvofvdop"]
+[gd_scene load_steps=5 format=3 uid="uid://c7j81jvofvdop"]
 
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://Sprite-0001.png" id="1_a53fa"]
 [ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://predator.tscn" id="2_m3wy8"]
+[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://prey.tscn" id="3_56njm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(88, 88)
@@ -68,3 +69,6 @@ shape = SubResource("RectangleShape2D_m3wy8")
 
 [node name="Predator" parent="." instance=ExtResource("2_m3wy8")]
 position = Vector2(143, 296)
+
+[node name="Prey" parent="." instance=ExtResource("3_56njm")]
+position = Vector2(982, 317)

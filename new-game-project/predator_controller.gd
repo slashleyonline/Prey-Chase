@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	#normal movement logic
-	var input = Input.get_vector("left", "right", "up", "down")
+	var input = Input.get_vector("pred_left", "pred_right", "pred_up", "pred_down")
 	
 	#direction logic
 	if input != Vector2.ZERO:

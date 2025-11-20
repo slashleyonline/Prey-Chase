@@ -9,9 +9,9 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8or0i"]
 size = Vector2(10, 11)
 
-[node name="Predator" type="Node2D"]
+[node name="Predator" type="Node2D" groups=["predator"]]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["predator"]]
 script = ExtResource("1_addl1")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]

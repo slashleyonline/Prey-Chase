@@ -18,7 +18,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	# Basic Movement
-	var input = Input.get_vector("left", "right", "up", "down")
+	var input = Input.get_vector("prey_left", "prey_right", "prey_up", "prey_down")
 	velocity = input * speed
 	move_and_slide()
 	
@@ -38,7 +38,7 @@ func attempt_mimic():
 		print("Raycast hit: ", object_hit.name)
 		
 		# Checks for a node named "Sprite2D"
-		if object_hit.has_node("Sprite2D"):
+		if object_hit.has_node("Sprite2D") && (!object_hit.is_in_group("predator")):
 			print("Found Sprite2D on target!")
 			var target_sprite = object_hit.get_node("Sprite2D")
 			

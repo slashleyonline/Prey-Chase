@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://eopgapenglgf"]
 
-[ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://Sprite-0001.png" id="1_0lvvg"]
 [ext_resource type="Script" uid="uid://dql02uv14t8od" path="res://predator_controller.gd" id="1_addl1"]
+[ext_resource type="Texture2D" uid="uid://drri6wa4djd5b" path="res://assets/predatorWolf.png" id="2_addl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_addl1"]
-size = Vector2(14, 14)
+size = Vector2(16, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8or0i"]
 size = Vector2(10, 11)
@@ -14,12 +14,13 @@ size = Vector2(10, 11)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["predator"]]
 script = ExtResource("1_addl1")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(14.5, 14.5)
-texture = ExtResource("1_0lvvg")
+[node name="PredatorWolf" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1, 1)
+scale = Vector2(0.65625, 0.625)
+texture = ExtResource("2_addl1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_addl1")
 
 [node name="Hitbox" type="Area2D" parent="CharacterBody2D"]

@@ -31,8 +31,8 @@ func _physics_process(_delta: float) -> void:
 	#direction logic
 	if input != Vector2.ZERO:
 		lookDirection = input
-		hitbox.rotation = lookDirection.angle()
-		$Sprite2D.rotation = lookDirection.angle()
+		#hitbox.rotation = lookDirection.angle()
+		#$PredatorWolf.rotation = lookDirection.angle()
 	
 	velocity = input * speed
 	

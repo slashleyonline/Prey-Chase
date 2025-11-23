@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var disguise_duration = 5.0
-@onready var sprite = $Sprite2D
+@onready var sprite = $PreyRabbit
 @onready var raycast = $RayCast2D
 @onready var collision_shape = $CollisionShape2D
 

@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 #editable in the editor
 @export var speed = 400
-@export var pounceSpeed = 1600
-@export var pouncecDuration = 0.3
-@export var pouncePauseTimer = 5.0
+@export var pounceSpeed = 1100
+@export var pouncecDuration = 0.1
+@export var pouncePauseTimer = 4.0
 @export var attackCooldown = 1.5
+@export var attackDuration = .25
 
 #other important vars
 var lookDirection = Vector2.RIGHT
@@ -31,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	#direction logic
 	if input != Vector2.ZERO:
 		lookDirection = input
-		#hitbox.rotation = lookDirection.angle()
+		hitbox.rotation = lookDirection.angle()
 		#$PredatorWolf.rotation = lookDirection.angle()
 	
 	velocity = input * speed
@@ -46,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 		
 	move_and_slide()
 
-#pounce function
+#pounce/dash function
 func startPounce(direction: Vector2):
 	is_pouncing = true
 	can_pounce = false
@@ -83,6 +84,7 @@ func performAttack():
 		if body.has_method("die"):
 			body.die()
 			
+	await get_tree().create_timer(attackDuration).timeout
 	hitbox_shape.disabled = true
 	
 	await get_tree().create_timer(attackCooldown).timeout

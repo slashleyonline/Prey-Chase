@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cherrjuypb8dr"]
 
 [ext_resource type="Script" uid="uid://cmm82rx1bjs6d" path="res://prey_controller.gd" id="1_8ph3e"]
-[ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://Sprite-0001.png" id="2_3u63i"]
+[ext_resource type="Texture2D" uid="uid://b8wy2qqpfqfuv" path="res://assets/preyRabbit.png" id="2_8ph3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_addl1"]
 size = Vector2(14, 14)
@@ -11,9 +11,13 @@ size = Vector2(14, 14)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_8ph3e")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(14.5, 14.5)
-texture = ExtResource("2_3u63i")
+[node name="PreyRabbit" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
+scale = Vector2(0.65625, 0.59375)
+texture = ExtResource("2_8ph3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_addl1")
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(50, 0)

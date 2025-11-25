@@ -7,6 +7,7 @@
 size = Vector2(88, 88)
 
 [node name="TestSceneForPrey" type="Node2D"]
+position = Vector2(1, 0)
 
 [node name="Prey" parent="." instance=ExtResource("1_4wqvw")]
 position = Vector2(132, 319)

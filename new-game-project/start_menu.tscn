@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6c1wl7u51pe5"]
+
+[ext_resource type="Script" uid="uid://vsgkhm0tsk71" path="res://menu_options.gd" id="1_jwbto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ia0g5"]
+font_size = 64
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jwbto")
+
+[node name="connect" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 90.0
+offset_right = 49.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connect"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 137.0
+offset_right = 49.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+offset_left = 474.0
+offset_top = 364.0
+offset_right = 674.0
+offset_bottom = 400.0
+text = "localhost"
+placeholder_text = "Enter IP here"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -103.0
+offset_right = 257.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PREDATOR/PREY"
+label_settings = SubResource("LabelSettings_ia0g5")
+
+[node name="FullscreenCheck" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="FullscreenCheck"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 21.0
+offset_right = 134.0
+offset_bottom = 44.0
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="FullscreenCheck"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 51.0
+offset_bottom = 45.0
+
+[connection signal="pressed" from="connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="FullscreenCheck/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]

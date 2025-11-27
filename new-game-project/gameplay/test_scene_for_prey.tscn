@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7ws8tld6o437"]
 
-[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://multiplayer/prey.tscn" id="1_wa6gg"]
+[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="1_wa6gg"]
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="2_vrhqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baahg"]

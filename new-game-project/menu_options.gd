@@ -2,7 +2,11 @@ extends Control
 
 
 func _on_connect_pressed() -> void:
-	pass
+	if (!NetworkHandler.server_running):
+		NetworkHandler.start_server()
+	else:
+		print("joining")
+		NetworkHandler.start_client()
 
 
 func _on_quit_pressed() -> void:

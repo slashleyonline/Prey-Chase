@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cherrjuypb8dr"]
 
-[ext_resource type="Script" uid="uid://cmm82rx1bjs6d" path="res://multiplayer/prey_controller.gd" id="1_8ph3e"]
+[ext_resource type="Script" uid="uid://cmm82rx1bjs6d" path="res://gameplay/prey_controller.gd" id="1_8ph3e"]
 [ext_resource type="Texture2D" uid="uid://b8wy2qqpfqfuv" path="res://assets/preyRabbit.png" id="2_8ph3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_addl1"]

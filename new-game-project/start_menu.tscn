@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6c1wl7u51pe5"]
 
-[ext_resource type="Script" uid="uid://vsgkhm0tsk71" path="res://multiplayer/menu_options.gd" id="1_jwbto"]
+[ext_resource type="Script" uid="uid://vsgkhm0tsk71" path="res://menu_options.gd" id="1_jwbto"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ia0g5"]
 font_size = 64
@@ -43,15 +43,6 @@ offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
-
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 1
-offset_left = 474.0
-offset_top = 364.0
-offset_right = 674.0
-offset_bottom = 400.0
-text = "localhost"
-placeholder_text = "Enter IP here"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

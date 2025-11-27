@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7j81jvofvdop"]
 
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="1_a53fa"]
-[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://multiplayer/predator.tscn" id="2_m3wy8"]
-[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://multiplayer/prey.tscn" id="3_56njm"]
+[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="2_m3wy8"]
+[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="3_56njm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(88, 88)

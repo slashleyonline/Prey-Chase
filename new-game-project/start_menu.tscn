@@ -14,6 +14,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jwbto")
 
+[node name="host" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 45.0
+offset_right = 49.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host
+"
+
 [node name="connect" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -80,6 +96,7 @@ offset_top = 21.0
 offset_right = 51.0
 offset_bottom = 45.0
 
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="toggled" from="FullscreenCheck/CheckBox" to="." method="_on_fullscreen_check_box_toggled"]

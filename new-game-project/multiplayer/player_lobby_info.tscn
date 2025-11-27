@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb7jwx5frvrf8"]
+
+[ext_resource type="Script" uid="uid://bmplfattowss6" path="res://multiplayer/player_lobby_control.gd" id="1_iql7s"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_iql7s"]
+properties/0/path = NodePath("ReadyCheck/CheckBox:toggle_mode")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("ReadyCheck/CheckBox:button_pressed")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="PlayerInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_iql7s")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="ReadyCheck" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="ReadyCheck"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 56.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "READY:"
+
+[node name="CheckBox" type="CheckBox" parent="ReadyCheck"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = -11.5
+offset_right = 87.0
+offset_bottom = 12.5
+grow_vertical = 2
+
+[node name="ID" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ID"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ID: N/A
+NAME: N/A"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_iql7s")
+
+[connection signal="toggled" from="ReadyCheck/CheckBox" to="." method="_on_check_box_toggled"]

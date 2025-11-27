@@ -1,5 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bun1feb7ncpke"]
+[gd_scene load_steps=5 format=3 uid="uid://bun1feb7ncpke"]
 
+[ext_resource type="PackedScene" uid="uid://bb7jwx5frvrf8" path="res://multiplayer/player_lobby_info.tscn" id="1_246i7"]
+[ext_resource type="Script" uid="uid://bt27vowbfdw41" path="res://multiplayer/lobby.gd" id="1_fimc5"]
 [ext_resource type="Script" uid="uid://btnt072cuuwc5" path="res://multiplayer_lobby_spawner.gd" id="1_im3a5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_246i7"]
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fimc5")
 
 [node name="PlayerList" type="Control" parent="."]
 layout_mode = 1
@@ -20,9 +23,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 224.0
-offset_top = -223.0
+offset_top = -238.0
 offset_right = -160.0
-offset_bottom = 224.0
+offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -34,339 +37,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerInfo" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
-[node name="PlayerInfo2" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo2"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo2/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo2/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo2"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo2/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
-[node name="PlayerInfo3" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo3"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo3/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo3/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo3"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo3/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
-[node name="PlayerInfo4" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo4"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo4/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo4/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo4"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo4/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
-[node name="PlayerInfo5" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo5"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo5/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo5/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo5"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo5/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
-[node name="PlayerInfo6" type="Control" parent="PlayerList/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PlayerList/VBoxContainer/PlayerInfo6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="ReadyCheck" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo6"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo6/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "READY:"
-
-[node name="CheckBox" type="CheckBox" parent="PlayerList/VBoxContainer/PlayerInfo6/ReadyCheck"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = -11.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_vertical = 2
-
-[node name="ID" type="Control" parent="PlayerList/VBoxContainer/PlayerInfo6"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PlayerList/VBoxContainer/PlayerInfo6/ID"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ID: N/A"
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../PlayerList")
+_spawnable_scenes = PackedStringArray("uid://bb7jwx5frvrf8")
+spawn_path = NodePath("../PlayerList/VBoxContainer")
 script = ExtResource("1_im3a5")
+network_player = ExtResource("1_246i7")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -380,3 +55,21 @@ offset_bottom = 82.0
 grow_horizontal = 2
 text = "Player List:"
 label_settings = SubResource("LabelSettings_246i7")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = 235.0
+offset_right = 96.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

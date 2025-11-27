@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://eopgapenglgf"]
 
-[ext_resource type="Script" uid="uid://dql02uv14t8od" path="res://predator_controller.gd" id="1_addl1"]
+[ext_resource type="Script" uid="uid://dql02uv14t8od" path="res://multiplayer/predator_controller.gd" id="1_addl1"]
 [ext_resource type="Texture2D" uid="uid://drri6wa4djd5b" path="res://assets/predatorWolf.png" id="2_addl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_addl1"]

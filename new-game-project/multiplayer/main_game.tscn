@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cir4maq7udyt7"]
 
-[ext_resource type="PackedScene" uid="uid://c7j81jvofvdop" path="res://basic_level.tscn" id="1_1oj5k"]
+[ext_resource type="PackedScene" uid="uid://c7j81jvofvdop" path="res://gameplay/basic_level.tscn" id="1_1oj5k"]
 
 [node name="MainGame" type="Node2D"]
 

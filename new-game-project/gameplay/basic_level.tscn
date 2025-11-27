@@ -72,3 +72,5 @@ position = Vector2(143, 296)
 
 [node name="Prey" parent="." instance=ExtResource("3_56njm")]
 position = Vector2(982, 317)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

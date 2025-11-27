@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bun1feb7ncpke"]
+[gd_scene load_steps=6 format=3 uid="uid://bun1feb7ncpke"]
 
 [ext_resource type="PackedScene" uid="uid://bb7jwx5frvrf8" path="res://multiplayer/player_lobby_info.tscn" id="1_246i7"]
 [ext_resource type="Script" uid="uid://bt27vowbfdw41" path="res://multiplayer/lobby.gd" id="1_fimc5"]
@@ -6,6 +6,17 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_246i7"]
 font_size = 48
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fimc5"]
+properties/0/path = NodePath("Button:button_pressed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:game_started")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -71,5 +82,8 @@ offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start Game"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fimc5")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

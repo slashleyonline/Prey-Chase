@@ -1,6 +1,13 @@
 extends Control
 
 @onready var container = $PlayerList/VBoxContainer
+@export var game_started = false:
+	set(input):
+		if input == true:
+			game_begin.emit()
+			print("starting game!")
+
+signal game_begin
 
 func _ready():
 	if (multiplayer.is_server()):
@@ -19,9 +26,10 @@ func check_container():
 	else: 
 		return false
 
-func start_game():
-	pass
 
 func _on_button_pressed() -> void:
+	print("button pressed!")
 	if (check_container()):
-		start_game()
+		game_started = true
+	else:
+		print("false!")

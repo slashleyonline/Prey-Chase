@@ -1,8 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=5 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="PackedScene" uid="uid://c7j81jvofvdop" path="res://gameplay/basic_level.tscn" id="1_1o0c0"]
+[ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
+[ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6w4jh"]
+properties/0/path = NodePath("Lobby:game_started")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("BasicLevel:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_yo32q")
 
 [node name="BasicLevel" parent="." instance=ExtResource("1_1o0c0")]
+visible = false
 position = Vector2(-2, -1)
+
+[node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
+offset_right = 1200.0
+
+[node name="VBoxContainer" parent="Lobby/PlayerList" index="0"]
+offset_top = 340.0
+offset_bottom = 340.0
+
+[node name="Button" parent="Lobby" index="3"]
+visible = true
+offset_top = 570.0
+offset_bottom = 624.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6w4jh")
+
+[connection signal="game_begin" from="Lobby" to="." method="_on_lobby_game_begin"]
+
+[editable path="Lobby"]

@@ -4,11 +4,11 @@ extends Control
 func _on_connect_pressed() -> void:
 	print("joining")
 	NetworkHandler.start_client()
-	get_tree().change_scene_to_file("res://multiplayer/lobby.tscn")
+	get_tree().change_scene_to_file("res://gameplay/main_game.tscn")
 
 func _on_host_pressed() -> void:
 	NetworkHandler.start_server()
-	get_tree().change_scene_to_file("res://multiplayer/lobby.tscn")
+	get_tree().change_scene_to_file("res://gameplay/main_game.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

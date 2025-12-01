@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=13 format=3 uid="uid://cir4maq7udyt7"]
 
-[ext_resource type="PackedScene" uid="uid://c7j81jvofvdop" path="res://gameplay/basic_level.tscn" id="1_1o0c0"]
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
+[ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="2_6wcwo"]
+[ext_resource type="Texture2D" uid="uid://bnum3cs0d18tb" path="res://assets/tree.png" id="3_o6sg1"]
+[ext_resource type="Texture2D" uid="uid://5w2e7jpmb2hn" path="res://assets/rocks.png" id="4_ament"]
+[ext_resource type="Texture2D" uid="uid://b3b0bredgsobj" path="res://assets/sticks.png" id="5_6geg2"]
+[ext_resource type="Texture2D" uid="uid://dkfhpni4nc5si" path="res://assets/shrub.png" id="6_dv5lg"]
+[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="7_qvf7t"]
+[ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="8_moctb"]
+[ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
+size = Vector2(16, 90)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6w4jh"]
 properties/0/path = NodePath("Lobby:game_started")
@@ -15,25 +25,817 @@ properties/1/replication_mode = 1
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_yo32q")
 
-[node name="BasicLevel" parent="." instance=ExtResource("1_1o0c0")]
+[node name="BasicLevel" type="Node2D" parent="."]
 visible = false
 position = Vector2(-2, -1)
 
+[node name="Background" type="Node2D" parent="BasicLevel"]
+
+[node name="Sprite2D" type="Sprite2D" parent="BasicLevel/Background"]
+modulate = Color(0.41568628, 0.37254903, 0.25882354, 1)
+position = Vector2(577.25, 326.75)
+scale = Vector2(1155.5, 654.5)
+texture = ExtResource("2_6wcwo")
+
+[node name="Obstacles" type="Node2D" parent="BasicLevel"]
+
+[node name="Trees" type="Node2D" parent="BasicLevel/Obstacles"]
+
+[node name="Obstacle" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(217, 160)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle2" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(809, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle2"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle2"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="Obstacle3" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(809, 381)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle3"]
+position = Vector2(43, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle3"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle4" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(219, 380)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle4"]
+position = Vector2(43, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle4"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle5" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(503, 75)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle5"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle5"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle6" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(582, 413)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle6"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle6"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle7" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(64, 45)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle7"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle7"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle8" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(521, 260)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle8"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle8"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Rock Obstacles" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees/Obstacle8"]
+position = Vector2(-578, 10)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles"]
+position = Vector2(44, -126)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles/Rock Obstacles"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles/Rock Obstacles"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles/Rock Obstacles"]
+position = Vector2(-46, -99)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles/Rock Obstacles/Rock Obstacles"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Trees/Obstacle8/Rock Obstacles/Rock Obstacles/Rock Obstacles"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Obstacle9" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(993, 86)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle9"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle9"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle10" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(446, 298)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle10"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle10"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle11" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(897, 449)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle11"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle11"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle12" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(13, 438)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle12"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle12"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle13" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(364, 516)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle13"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle13"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle14" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(316, 49)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle14"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle14"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle15" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(748, 538)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle15"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle15"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle16" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(674, 68)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle16"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle16"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Obstacle17" type="StaticBody2D" parent="BasicLevel/Obstacles/Trees"]
+position = Vector2(1047, 352)
+
+[node name="Tree" type="Sprite2D" parent="BasicLevel/Obstacles/Trees/Obstacle17"]
+position = Vector2(42.999985, 44)
+scale = Vector2(0.093124986, 0.11187508)
+texture = ExtResource("3_o6sg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevel/Obstacles/Trees/Obstacle17"]
+position = Vector2(44, 44)
+shape = SubResource("RectangleShape2D_m3wy8")
+
+[node name="Rocks" type="Node2D" parent="BasicLevel/Obstacles"]
+
+[node name="Rock Obstacles7" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(570, 238)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles7"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles7"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles6" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(696, 187)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles6"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles6"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles5" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(935, 356)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles5"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles5"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles4" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(915, 500)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles4"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles4"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles16" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(463, 241)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles16"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles16"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles15" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(242, 81)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles15"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles15"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles14" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(292, 65)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles14"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles14"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles13" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(266, 49)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles13"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles13"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles12" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(49, -35)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles12"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles12"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles11" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(904, 189)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles11"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles11"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles10" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(757, -57)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles10"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles10"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles9" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(78, 502)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles9"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles9"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles8" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(430, 453)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles8"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles8"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles3" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(924, 525)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles3"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles3"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(226, 163)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles"]
+position = Vector2(134, 99)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Rock Obstacles2" type="StaticBody2D" parent="BasicLevel/Obstacles/Rocks"]
+position = Vector2(960, 513)
+
+[node name="Rock" type="Sprite2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles2"]
+position = Vector2(136, 100)
+scale = Vector2(0.6014064, 0.67901045)
+texture = ExtResource("4_ament")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Rocks/Rock Obstacles2"]
+position = Vector2(134, 100)
+polygon = PackedVector2Array(25, 9, 3, -11, -16, -14, -24, 0, -27, 8, -16, 13, 8, 14, 14, 15, 25, 9)
+
+[node name="Sticks" type="Node2D" parent="BasicLevel/Obstacles"]
+
+[node name="Sticks8" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(623, 475)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks8"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks8"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks7" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(1040, 227)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks7"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks7"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks6" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(-14, 195)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks6"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks6"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks5" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(106, 483)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks5"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks5"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks4" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(220, 291)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks4"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks4"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks3" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(1038, 24)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks3"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks3"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks2" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(661, 220)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks2"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks2"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Sticks" type="StaticBody2D" parent="BasicLevel/Obstacles/Sticks"]
+position = Vector2(608, 604)
+
+[node name="Stick" type="Sprite2D" parent="BasicLevel/Obstacles/Sticks/Sticks"]
+position = Vector2(59.99998, 26.500048)
+scale = Vector2(0.8125005, 0.8593747)
+texture = ExtResource("5_6geg2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Sticks/Sticks"]
+position = Vector2(61, 28)
+polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
+
+[node name="Shrubs" type="Node2D" parent="BasicLevel/Obstacles"]
+
+[node name="Shrubs11" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(954, 146)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs11"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs11"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs10" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(853, 233)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs10"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs10"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs9" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(858, 506)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs9"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs9"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs8" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(906, 506)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs8"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs8"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs7" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(182, 216)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs7"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs7"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs6" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(373, 576)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs6"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs6"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs5" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(759, 599)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs5"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs5"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs4" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(417, 369)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs4"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs4"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs3" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(386, 362)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs3"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs3"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs2" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(830, 236)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2"]
+position = Vector2(-25, -9)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs"]
+position = Vector2(-291, -96)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs"]
+position = Vector2(-442, -28)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs"]
+position = Vector2(-103, 373)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(-8, 14)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(25, 109)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(22, 3)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(22, 7)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs2/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Shrubs" type="StaticBody2D" parent="BasicLevel/Obstacles/Shrubs"]
+position = Vector2(412, 354)
+
+[node name="Shrub" type="Sprite2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs"]
+position = Vector2(60.67405, 26.891571)
+scale = Vector2(2.6179912, 2.555936)
+texture = ExtResource("6_dv5lg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BasicLevel/Obstacles/Shrubs/Shrubs"]
+position = Vector2(60.950844, 28.174671)
+scale = Vector2(0.99831074, 1.0098684)
+polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
+
+[node name="Predator" parent="BasicLevel" instance=ExtResource("7_qvf7t")]
+position = Vector2(143, 296)
+
+[node name="Prey" parent="BasicLevel" instance=ExtResource("8_moctb")]
+position = Vector2(982, 317)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="BasicLevel"]
+spawn_path = NodePath("..")
+script = ExtResource("9_o6sg1")
+network_player = ExtResource("8_moctb")
+
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
-offset_right = 1200.0
-
-[node name="VBoxContainer" parent="Lobby/PlayerList" index="0"]
-offset_top = 340.0
-offset_bottom = 340.0
-
-[node name="Button" parent="Lobby" index="3"]
-visible = true
-offset_top = 570.0
-offset_bottom = 624.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6w4jh")
 
 [connection signal="game_begin" from="Lobby" to="." method="_on_lobby_game_begin"]
-
-[editable path="Lobby"]

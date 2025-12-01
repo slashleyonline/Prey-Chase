@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq3huk364skd3"]
+
+[ext_resource type="Script" uid="uid://bqqnggp4nv32m" path="res://main_menu.gd" id="1_0fbet"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_62e2m"]
+font_size = 64
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fbet")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -344.7344
+offset_right = 344.7344
+offset_bottom = 352.0
+grow_horizontal = 2
+text = "PREY/CHASE"
+label_settings = SubResource("LabelSettings_62e2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IPentry" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.7312
+offset_top = -18.625
+offset_right = 97.7312
+offset_bottom = 18.625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 32.0
+offset_right = 98.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connect"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 92.0
+offset_right = 97.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[connection signal="lines_edited_from" from="IPentry" to="." method="_on_i_pentry_lines_edited_from"]
+[connection signal="text_set" from="IPentry" to="." method="_on_text_set"]
+[connection signal="button_down" from="Button" to="." method="_on_connect_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_exit_button_down"]

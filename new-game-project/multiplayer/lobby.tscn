@@ -23,6 +23,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1200.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fimc5")
@@ -45,6 +46,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 340.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -68,7 +71,6 @@ text = "Player List:"
 label_settings = SubResource("LabelSettings_246i7")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,9 +78,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -104.0
-offset_top = 235.0
+offset_top = 570.0
 offset_right = 96.0
-offset_bottom = 289.0
+offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start Game"

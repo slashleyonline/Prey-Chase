@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=14 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="7_qvf7t"]
 [ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="8_moctb"]
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
+[ext_resource type="Script" uid="uid://cbb77nb0tc5kv" path="res://gameplay/multiplayer_synchronizer.gd" id="11_ament"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)
@@ -21,12 +22,14 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("BasicLevel:visible")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("BasicLevel/Prey:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_yo32q")
 
 [node name="BasicLevel" type="Node2D" parent="."]
-visible = false
 position = Vector2(-2, -1)
 
 [node name="Background" type="Node2D" parent="BasicLevel"]
@@ -825,17 +828,20 @@ polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 1
 [node name="Predator" parent="BasicLevel" instance=ExtResource("7_qvf7t")]
 position = Vector2(143, 296)
 
-[node name="Prey" parent="BasicLevel" instance=ExtResource("8_moctb")]
-position = Vector2(982, 317)
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="BasicLevel"]
+_spawnable_scenes = PackedStringArray("uid://cherrjuypb8dr")
 spawn_path = NodePath("..")
 script = ExtResource("9_o6sg1")
 network_player = ExtResource("8_moctb")
 
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
+visible = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6w4jh")
+script = ExtResource("11_ament")
 
+[connection signal="player_spawned" from="BasicLevel/MultiplayerSpawner" to="MultiplayerSynchronizer" method="_on_multiplayer_spawner_player_spawned"]
 [connection signal="game_begin" from="Lobby" to="." method="_on_lobby_game_begin"]
+
+[editable path="Lobby"]

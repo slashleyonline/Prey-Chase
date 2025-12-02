@@ -16,6 +16,11 @@ var original_collision_transform = Transform2D.IDENTITY
 # Variable to remember where to respawn
 var spawn_position = Vector2.ZERO
 
+# Define multiplayer authority for control over this specific node
+func _enter_tree() -> void:
+	print("multiplayer authority: ", get_parent().name.to_int())
+	set_multiplayer_authority(get_parent().name.to_int())
+
 # This is to remember what and where the prey started out as
 func _ready():
 	# Stores the location where the player spawned in the level
@@ -30,6 +35,7 @@ func _ready():
 	original_collision_transform = collision_shape.transform
 
 func _physics_process(_delta: float) -> void:
+	if !is_multiplayer_authority(): return
 	# Basic Movement
 	var input = Input.get_vector("prey_left", "prey_right", "prey_up", "prey_down")
 	velocity = input * speed

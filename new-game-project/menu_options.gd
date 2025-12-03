@@ -3,6 +3,7 @@ extends Control
 ## DEBUG SLOP
 
 func _ready():
+	return
 	_on_host_pressed()
 
 func _on_connect_pressed() -> void:

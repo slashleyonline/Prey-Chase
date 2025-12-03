@@ -24,14 +24,16 @@ func determine_team(id: int):
 
 func create_game_entry(id: int, scene: PackedScene):
 	print("created player entity!")
+	var player: Node = scene.instantiate()
+	
 	if !multiplayer.is_server(): 
 		return
-	if (scene == scenes[0]): 
+	
+	if (scene == scenes[0]):
 		prey_players +=1
 	else:
 		pred_players += 1
 	
-	var player: Node = scene.instantiate()
 	player.name = str(id)
 	print("player name: ", str(id))
 	get_node(spawn_path).call_deferred("add_child", player)

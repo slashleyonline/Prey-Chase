@@ -20,6 +20,7 @@ var spawn_position = Vector2.ZERO
 func _enter_tree() -> void:
 	print("multiplayer authority: ", get_parent().name.to_int())
 	set_multiplayer_authority(get_parent().name.to_int())
+	get_parent().set_multiplayer_authority(get_parent().name.to_int())
 
 # This is to remember what and where the prey started out as
 func _ready():
@@ -56,17 +57,25 @@ func _physics_process(_delta: float) -> void:
 func attempt_mimic():
 	if raycast.is_colliding():
 		var object_hit = raycast.get_collider()
-		
+		print(object_hit.name)
 		# Checks for a node named "Sprite2D", "CollisionShape2D" and that it isn't a predator
-		if object_hit.has_node("Sprite2D") and object_hit.has_node("CollisionShape2D") and not object_hit.is_in_group("predator"):
-			var target_sprite = object_hit.get_node("Sprite2D")
-			var target_collision = object_hit.get_node("CollisionShape2D")
+		if ((object_hit.has_node("Tree") or object_hit.has_node("Rock") or object_hit.has_node("Stick") or
+			object_hit.has_node("Shrub")) 
+			and (object_hit.has_node("CollisionShape2D") or object_hit.has_node("CollisionPolygon2D"))
+			and not object_hit.is_in_group("predator")):
+			
+			var target_sprite = object_hit.get_child(0)
+			var target_collision
+			if object_hit.has_node("CollisionShape2D"):
+				target_collision = object_hit.get_node("CollisionShape2D")
+				collision_shape.set_deferred("shape", target_collision.shape)
+			elif object_hit.has_node("CollisionPolygon2D"):
+				target_collision = object_hit.get_node("CollisionPolygon2D")
 			
 			# Copies the Image, Color, Size, Hitbox and resets hitbox location to be positioned correctly
 			sprite.texture = target_sprite.texture
 			sprite.modulate = target_sprite.modulate
 			sprite.scale = target_sprite.scale
-			collision_shape.set_deferred("shape", target_collision.shape)
 			collision_shape.set_deferred("transform", Transform2D.IDENTITY)
 			
 			is_disguised = true

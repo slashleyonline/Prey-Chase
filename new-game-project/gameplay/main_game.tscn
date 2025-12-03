@@ -29,6 +29,7 @@ properties/1/replication_mode = 1
 script = ExtResource("1_yo32q")
 
 [node name="BasicLevel" type="Node2D" parent="."]
+visible = false
 position = Vector2(-2, -1)
 
 [node name="Background" type="Node2D" parent="BasicLevel"]
@@ -875,7 +876,6 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
-visible = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6w4jh")

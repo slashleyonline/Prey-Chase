@@ -10,10 +10,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if is_multiplayer_authority():
-		await get_tree().process_frame
-		print("multiplayer authority: ", get_multiplayer_authority())
-		if is_multiplayer_authority():
-			print(name, " is authority!")
-			light.visible = true
-		else:
-			print(name.to_int(), " is not authority for ", get_multiplayer_authority())
+		print(name, " is authority!")
+		light.visible = true
+	else:
+		print(multiplayer.get_unique_id(), " is not authority for ", get_multiplayer_authority())

@@ -9,11 +9,6 @@ var scenes = [preload("res://gameplay/prey.tscn"), preload("res://gameplay/preda
 
 signal player_spawned
 
-func _ready():
-	multiplayer.peer_connected.connect(determine_team)
-	if multiplayer.is_server():
-		determine_team(1)
-
 func determine_team(id: int):
 	create_game_entry(id, scenes[0])
 	return
@@ -26,12 +21,10 @@ func determine_team(id: int):
 		create_game_entry(id, scenes[randi_range(0,1)])
 
 func create_game_entry(id: int, scene: PackedScene):
-	print("created player entity!")
-	var player: Node = scene.instantiate()
-	
+	print("created player entity!")	
 	if !multiplayer.is_server(): 
 		return
-	
+	var player: Node = scene.instantiate()
 	if (scene == scenes[0]):
 		prey_players +=1
 	else:

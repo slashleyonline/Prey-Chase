@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=15 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
@@ -14,6 +14,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ament"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6w4jh"]
 properties/0/path = NodePath("BasicLevel:visible")
@@ -830,6 +832,42 @@ _spawnable_scenes = PackedStringArray("uid://cherrjuypb8dr")
 spawn_path = NodePath("..")
 script = ExtResource("9_o6sg1")
 network_player = ExtResource("8_moctb")
+
+[node name="Walls" type="Node2D" parent="BasicLevel"]
+
+[node name="LeftWall" type="StaticBody2D" parent="BasicLevel/Walls"]
+position = Vector2(-2.5, 327.5)
+scale = Vector2(1, 33)
+
+[node name="WallCollision" type="CollisionShape2D" parent="BasicLevel/Walls/LeftWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_ament")
+
+[node name="RightWall" type="StaticBody2D" parent="BasicLevel/Walls"]
+position = Vector2(1157, 328)
+scale = Vector2(1, 33)
+
+[node name="WallCollision" type="CollisionShape2D" parent="BasicLevel/Walls/RightWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_ament")
+
+[node name="BottomWall" type="StaticBody2D" parent="BasicLevel/Walls"]
+position = Vector2(577.5, 657)
+rotation = 1.5707964
+scale = Vector2(1, 58)
+
+[node name="WallCollision" type="CollisionShape2D" parent="BasicLevel/Walls/BottomWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_ament")
+
+[node name="TopWall" type="StaticBody2D" parent="BasicLevel/Walls"]
+position = Vector2(578, -5)
+rotation = 1.5707964
+scale = Vector2(1, 58)
+
+[node name="WallCollision" type="CollisionShape2D" parent="BasicLevel/Walls/TopWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_ament")
 
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
 visible = false

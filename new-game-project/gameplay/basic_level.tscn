@@ -808,7 +808,7 @@ position = Vector2(982, 317)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 
-[node name="Walls" type="Node" parent="."]
+[node name="Walls" type="Node2D" parent="."]
 
 [node name="LeftWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(-2.5, 327.5)

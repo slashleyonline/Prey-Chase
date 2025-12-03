@@ -38,6 +38,11 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): return
+	
+	# Stops movement if the game is over
+	if WinCondition.game_active == false:
+		return
+
 	# Basic Movement
 	var input = Input.get_vector("prey_left", "prey_right", "prey_up", "prey_down")
 	velocity = input * speed
@@ -59,7 +64,7 @@ func attempt_mimic():
 	if raycast.is_colliding():
 		var object_hit = raycast.get_collider()
 		print(object_hit.name)
-		# Checks for a node named "Sprite2D", "CollisionShape2D" and that it isn't a predator
+		
 		if ((object_hit.has_node("Tree") or object_hit.has_node("Rock") or object_hit.has_node("Stick") or
 			object_hit.has_node("Shrub")) 
 			and (object_hit.has_node("CollisionShape2D") or object_hit.has_node("CollisionPolygon2D"))
@@ -83,6 +88,7 @@ func attempt_mimic():
 			is_disguised = true
 			
 			await get_tree().create_timer(disguise_duration).timeout
+			
 			if is_disguised:
 				revert_disguise()
 
@@ -100,6 +106,9 @@ func revert_disguise():
 
 # Death/Respawn logic
 func die():
+	# Tells the logic the prey has died
+	WinCondition.register_death()
+
 	print("The prey has been eaten!")
 	
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -110,17 +119,20 @@ func die():
 	# Waits a moment so the player realizes they died
 	await get_tree().create_timer(0.5).timeout
 	
-	# Resets prey to original form
-	if is_disguised:
-		revert_disguise()
-	else:
-		sprite.modulate = original_color
+	# Respawn if the game isn't over yet
+	if WinCondition.game_active:
+		# Resets prey to original form
+		if is_disguised:
+			revert_disguise()
+		else:
+			sprite.modulate = original_color
+			
+		# Teleports prey back to spawn position
+		global_position = spawn_position
 		
-	# Teleports prey back to spawn position
-	global_position = spawn_position
-	
-	# Re-enables collision so we can keep playing
-	$CollisionShape2D.set_deferred("disabled", false)
-	
-	print("Prey Respawned")
-	
+		# Re-enables collision so we can keep playing
+		$CollisionShape2D.set_deferred("disabled", false)
+		
+		print("Prey Respawned")
+	else:
+		print("Game Over. No respawn allowed.")

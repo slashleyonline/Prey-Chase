@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7j81jvofvdop"]
+[gd_scene load_steps=10 format=3 uid="uid://c7j81jvofvdop"]
 
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="1_a53fa"]
 [ext_resource type="Texture2D" uid="uid://bnum3cs0d18tb" path="res://assets/tree.png" id="2_7isux"]
@@ -10,6 +10,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7isux"]
 
 [node name="BasicLevel" type="Node2D"]
 
@@ -805,3 +807,39 @@ position = Vector2(143, 296)
 position = Vector2(982, 317)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(-2.5, 327.5)
+scale = Vector2(1, 33)
+
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/LeftWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_7isux")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(1157, 328)
+scale = Vector2(1, 33)
+
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/RightWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_7isux")
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(577.5, 657)
+rotation = 1.5707964
+scale = Vector2(1, 58)
+
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/BottomWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_7isux")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(578, -5)
+rotation = 1.5707964
+scale = Vector2(1, 58)
+
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/TopWall"]
+scale = Vector2(0.25, 1)
+shape = SubResource("RectangleShape2D_7isux")

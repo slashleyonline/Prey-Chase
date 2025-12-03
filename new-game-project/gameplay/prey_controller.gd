@@ -5,8 +5,14 @@ extends CharacterBody2D
 @onready var sprite = $PreyRabbit
 @onready var raycast = $RayCast2D
 @onready var collision_shape = $CollisionShape2D
+@export var texture_path: String: 
+	set(input):
+		texture_path = input
+		if sprite:
+			sprite.texture = load(input)
 
 var original_texture = null
+var original_texture_path = "res://assets/preyRabbit.png"
 var is_disguised = false
 var original_color = Color.WHITE
 var original_scale = Vector2.ONE
@@ -74,6 +80,7 @@ func attempt_mimic():
 			
 			# Copies the Image, Color, Size, Hitbox and resets hitbox location to be positioned correctly
 			sprite.texture = target_sprite.texture
+			texture_path = target_sprite.texture.resource_path
 			sprite.modulate = target_sprite.modulate
 			sprite.scale = target_sprite.scale
 			collision_shape.set_deferred("transform", Transform2D.IDENTITY)
@@ -87,6 +94,7 @@ func attempt_mimic():
 # Resets the prey back to normal
 func revert_disguise():
 	sprite.texture = original_texture
+	texture_path = original_texture_path
 	sprite.modulate = original_color
 	sprite.scale = original_scale
 	collision_shape.set_deferred("shape", original_shape)

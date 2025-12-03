@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=15 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://5w2e7jpmb2hn" path="res://assets/rocks.png" id="4_ament"]
 [ext_resource type="Texture2D" uid="uid://b3b0bredgsobj" path="res://assets/sticks.png" id="5_6geg2"]
 [ext_resource type="Texture2D" uid="uid://dkfhpni4nc5si" path="res://assets/shrub.png" id="6_dv5lg"]
-[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="7_qvf7t"]
 [ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="8_moctb"]
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
 [ext_resource type="AudioStream" uid="uid://cjxu8tqh7eohl" path="res://assets/audio/bgm.mp3" id="10_6geg2"]
@@ -824,9 +823,6 @@ texture = ExtResource("6_dv5lg")
 position = Vector2(60.950844, 28.174671)
 scale = Vector2(0.99831074, 1.0098684)
 polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
-
-[node name="Predator" parent="BasicLevel" instance=ExtResource("7_qvf7t")]
-position = Vector2(143, 296)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="BasicLevel"]
 _spawnable_scenes = PackedStringArray("uid://cherrjuypb8dr")

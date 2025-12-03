@@ -843,3 +843,6 @@ scale = Vector2(1, 58)
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/TopWall"]
 scale = Vector2(0.25, 1)
 shape = SubResource("RectangleShape2D_7isux")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.23137255, 0.23137255, 0.23137255, 1)

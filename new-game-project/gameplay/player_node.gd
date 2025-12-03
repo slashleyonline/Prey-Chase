@@ -5,6 +5,7 @@ extends Node2D
 @onready var light = $CharacterBody2D/PointLight2D
 
 func _enter_tree() -> void:
+	print("new player. id: ", name)
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:

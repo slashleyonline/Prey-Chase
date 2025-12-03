@@ -10,7 +10,7 @@ var scenes = [preload("res://gameplay/prey.tscn"), preload("res://gameplay/preda
 signal player_spawned
 
 func _ready():
-	multiplayer.peer_connected.connect(create_game_entry)
+	multiplayer.peer_connected.connect(determine_team)
 	if multiplayer.is_server():
 		create_game_entry(1, scenes[randi_range(0,1)]) 
 

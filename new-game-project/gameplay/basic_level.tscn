@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7j81jvofvdop"]
+[gd_scene load_steps=9 format=3 uid="uid://c7j81jvofvdop"]
 
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="1_a53fa"]
 [ext_resource type="Texture2D" uid="uid://bnum3cs0d18tb" path="res://assets/tree.png" id="2_7isux"]
-[ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="2_m3wy8"]
 [ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="3_56njm"]
 [ext_resource type="Texture2D" uid="uid://5w2e7jpmb2hn" path="res://assets/rocks.png" id="3_k7n0i"]
 [ext_resource type="Texture2D" uid="uid://dkfhpni4nc5si" path="res://assets/shrub.png" id="4_14yf3"]
@@ -799,9 +798,6 @@ texture = ExtResource("5_puqxu")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/Sticks/Sticks/Sticks/Sticks/Sticks/Sticks/Sticks/Sticks"]
 position = Vector2(61, 28)
 polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14, -1, -19, 17, -4, 25, 1, 15, 14, 23, 9, 8, 12, -3, 21, 11, 14, -12, 16, -23, 6, -21, 4, -27, 0, -27, -2, -19)
-
-[node name="Predator" parent="." instance=ExtResource("2_m3wy8")]
-position = Vector2(143, 296)
 
 [node name="Prey" parent="." instance=ExtResource("3_56njm")]
 position = Vector2(982, 317)

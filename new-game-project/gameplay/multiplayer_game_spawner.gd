@@ -13,11 +13,7 @@ func _ready():
 	multiplayer.peer_connected.connect(determine_team)
 	var num = randi_range(0,1)
 	if multiplayer.is_server():
-		create_game_entry(1, scenes[num]) 
-		if num == 0:
-			prey_players += 1
-		else:
-			pred_players += 1
+		determine_team(1)
 
 func determine_team(id: int):
 	if pred_players < prey_players:

@@ -45,5 +45,7 @@ disabled = true
 debug_color = Color(0.9852844, 0.07294289, 0.24985558, 0.41960785)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+visible = false
 scale = Vector2(2.484375, 2.28125)
 texture = SubResource("GradientTexture2D_2a2dv")
+texture_scale = 1.5

@@ -15,6 +15,9 @@ func _ready():
 		determine_team(1)
 
 func determine_team(id: int):
+	create_game_entry(id, scenes[0])
+	return
+	
 	if pred_players < prey_players:
 		create_game_entry(id, scenes[1])
 	elif prey_players < pred_players:

@@ -20,6 +20,7 @@ var can_attack = true
 @onready var hitbox = $Hitbox
 @onready var hitbox_shape = $Hitbox/HitboxShape
 
+
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): return
 	

@@ -803,6 +803,7 @@ polygon = PackedVector2Array(-10, -26, -14, -21, -6, -6, -21, -20, -24, -15, -14
 position = Vector2(982, 317)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
 
 [node name="Walls" type="Node2D" parent="."]
 

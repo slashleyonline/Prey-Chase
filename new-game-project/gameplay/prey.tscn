@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_addl1")
 target_position = Vector2(50, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+visible = false
 scale = Vector2(2.484375, 2.28125)
 texture = ExtResource("4_nuxqu")
 texture_scale = 1.5

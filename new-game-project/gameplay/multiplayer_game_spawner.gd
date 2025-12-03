@@ -11,7 +11,6 @@ signal player_spawned
 
 func _ready():
 	multiplayer.peer_connected.connect(determine_team)
-	var num = randi_range(0,1)
 	if multiplayer.is_server():
 		determine_team(1)
 

@@ -22,11 +22,6 @@ var original_collision_transform = Transform2D.IDENTITY
 # Variable to remember where to respawn
 var spawn_position = Vector2.ZERO
 
-# Define multiplayer authority for control over this specific node
-func _enter_tree() -> void:
-	print("multiplayer authority: ", get_parent().name.to_int())
-	set_multiplayer_authority(get_parent().name.to_int())
-	get_parent().set_multiplayer_authority(get_parent().name.to_int())
 
 # This is to remember what and where the prey started out as
 func _ready():

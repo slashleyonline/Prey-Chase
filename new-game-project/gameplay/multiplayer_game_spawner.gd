@@ -30,6 +30,7 @@ func create_game_entry(id: int, scene: PackedScene):
 		prey_players +=1
 	else:
 		pred_players += 1
+	
 	var player: Node = scene.instantiate()
 	player.name = str(id)
 	print("player name: ", str(id))

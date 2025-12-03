@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://eopgapenglgf"]
+[gd_scene load_steps=8 format=3 uid="uid://eopgapenglgf"]
 
+[ext_resource type="Script" uid="uid://dk0xfwp77gxk1" path="res://gameplay/player_node.gd" id="1_2a2dv"]
 [ext_resource type="Script" uid="uid://dql02uv14t8od" path="res://gameplay/predator_controller.gd" id="1_addl1"]
 [ext_resource type="Texture2D" uid="uid://drri6wa4djd5b" path="res://assets/predatorWolf.png" id="2_addl1"]
 
@@ -20,6 +21,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7905983, 0.20940171)
 
 [node name="Predator" type="Node2D" groups=["predator"]]
+script = ExtResource("1_2a2dv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["predator"]]
 script = ExtResource("1_addl1")
@@ -42,6 +44,6 @@ shape = SubResource("RectangleShape2D_8or0i")
 disabled = true
 debug_color = Color(0.9852844, 0.07294289, 0.24985558, 0.41960785)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
 scale = Vector2(2.484375, 2.28125)
 texture = SubResource("GradientTexture2D_2a2dv")

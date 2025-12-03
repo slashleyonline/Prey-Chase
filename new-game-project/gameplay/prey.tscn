@@ -1,7 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cherrjuypb8dr"]
 
+[ext_resource type="Script" uid="uid://dk0xfwp77gxk1" path="res://gameplay/player_node.gd" id="1_1jjnr"]
 [ext_resource type="Script" uid="uid://cmm82rx1bjs6d" path="res://gameplay/prey_controller.gd" id="1_8ph3e"]
 [ext_resource type="Texture2D" uid="uid://b8wy2qqpfqfuv" path="res://assets/preyRabbit.png" id="2_8ph3e"]
+[ext_resource type="Texture2D" uid="uid://bfm8f2xjxyynn" path="res://assets/light.tres" id="4_nuxqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_addl1"]
 size = Vector2(14, 14)
@@ -19,18 +21,12 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("CharacterBody2D/PreyRabbit:scale")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_c0bpx"]
-offsets = PackedFloat32Array(0.88980716, 0.91460055)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1jjnr"]
-gradient = SubResource("Gradient_c0bpx")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.7905983, 0.20940171)
+properties/4/path = NodePath("PointLight2D:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [node name="Prey" type="Node2D"]
+script = ExtResource("1_1jjnr")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_8ph3e")
@@ -47,9 +43,9 @@ shape = SubResource("RectangleShape2D_addl1")
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
 target_position = Vector2(50, 0)
 
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+scale = Vector2(2.484375, 2.28125)
+texture = ExtResource("4_nuxqu")
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_c0bpx")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(2.484375, 2.28125)
-texture = SubResource("GradientTexture2D_1jjnr")

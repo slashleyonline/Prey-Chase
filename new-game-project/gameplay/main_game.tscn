@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=16 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://eopgapenglgf" path="res://gameplay/predator.tscn" id="7_qvf7t"]
 [ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="8_moctb"]
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
+[ext_resource type="AudioStream" uid="uid://cjxu8tqh7eohl" path="res://assets/audio/bgm.mp3" id="10_6geg2"]
 [ext_resource type="Script" uid="uid://cbb77nb0tc5kv" path="res://gameplay/multiplayer_synchronizer.gd" id="11_ament"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
@@ -868,6 +869,10 @@ scale = Vector2(1, 58)
 [node name="WallCollision" type="CollisionShape2D" parent="BasicLevel/Walls/TopWall"]
 scale = Vector2(0.25, 1)
 shape = SubResource("RectangleShape2D_ament")
+
+[node name="backgroundMusic" type="AudioStreamPlayer2D" parent="BasicLevel"]
+stream = ExtResource("10_6geg2")
+autoplay = true
 
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
 visible = false

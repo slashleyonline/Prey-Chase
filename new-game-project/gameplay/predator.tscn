@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://eopgapenglgf"]
 
-[ext_resource type="Script" uid="uid://dk0xfwp77gxk1" path="res://gameplay/player_node.gd" id="1_2a2dv"]
+[ext_resource type="Script" path="res://gameplay/player_node.gd" id="1_2a2dv"]
 [ext_resource type="Script" uid="uid://dql02uv14t8od" path="res://gameplay/predator_controller.gd" id="1_addl1"]
 [ext_resource type="Texture2D" uid="uid://drri6wa4djd5b" path="res://assets/predatorWolf.png" id="2_addl1"]
 
@@ -49,3 +49,6 @@ visible = false
 scale = Vector2(2.484375, 2.28125)
 texture = SubResource("GradientTexture2D_2a2dv")
 texture_scale = 1.5
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(1.4, 1.4)

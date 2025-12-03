@@ -870,6 +870,9 @@ shape = SubResource("RectangleShape2D_ament")
 stream = ExtResource("10_6geg2")
 autoplay = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="BasicLevel"]
+color = Color(0, 0, 0, 1)
+
 [node name="Lobby" parent="." instance=ExtResource("2_6w4jh")]
 visible = false
 

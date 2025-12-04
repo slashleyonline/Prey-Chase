@@ -46,5 +46,8 @@ scale = Vector2(2.484375, 2.28125)
 texture = ExtResource("4_nuxqu")
 texture_scale = 1.5
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(1.4, 1.4)
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_c0bpx")

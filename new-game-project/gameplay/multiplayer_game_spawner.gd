@@ -15,7 +15,12 @@ signal player_spawned
 func determine_team(id: int):
 	print("spawning: ", id)
 	if !multiplayer.is_server(): return
-
+	
+	if (id == 1):
+		create_game_entry(id, scenes[0])
+	else:
+		create_game_entry(id, scenes[1])
+	return
 	if pred_players < prey_players:
 		create_game_entry(id, scenes[1])
 	elif prey_players < pred_players:

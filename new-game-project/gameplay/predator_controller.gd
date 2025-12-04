@@ -23,7 +23,7 @@ var can_attack = true
 func _enter_tree() -> void:
 	set_multiplayer_authority(get_parent().name.to_int(), true)
 	get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
-	global_position = Vector2(100,100)
+	global_position = Vector2(900,400)
 
 	print("global pos: ", global_position)
 
@@ -82,6 +82,7 @@ func startPounce(direction: Vector2):
 
 #attack logic
 func performAttack():
+	print("attack")
 	can_attack = false
 	hitbox_shape.disabled = false
 	
@@ -92,25 +93,27 @@ func performAttack():
 	var bodies = hitbox.get_overlapping_bodies()
 	
 	for body in bodies:
+		print("found body")
+		print(body.name)
 		if body == self:
 			continue
 		if body.has_method("die"):
-			body.die()
-			
+			print("prey found")
+			if multiplayer.is_server():
+				rpc("apply_damage", body.get_instance_id())
+			else:
+				print("client!")
+				NetworkHandler.apply_damage.rpc(body.get_multiplayer_authority())
 	await get_tree().create_timer(attackDuration).timeout
 	hitbox_shape.disabled = true
 	
 	await get_tree().create_timer(attackCooldown).timeout
 	can_attack = true
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+@rpc("any_peer", "call_local")
+func apply_damage(prey_id):
+	print("chungular pred! ", multiplayer.get_remote_sender_id())
+	if !multiplayer.is_server(): return
+	print(prey_id)
+	var target = instance_from_id(prey_id)
+	target.die()

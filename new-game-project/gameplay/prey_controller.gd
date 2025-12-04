@@ -142,3 +142,12 @@ func die():
 		print("Prey Respawned")
 	else:
 		print("Game Over. No respawn allowed.")
+
+@rpc("any_peer", "reliable")
+func activate_death(name):
+	print(get_parent().name, " - ", name)
+	if get_parent().name == name:
+		print("DIEEEE")
+		var node = self
+		if node.has_method("die"):
+			node.die()

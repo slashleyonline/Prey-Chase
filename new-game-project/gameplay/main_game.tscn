@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
 [ext_resource type="AudioStream" uid="uid://cjxu8tqh7eohl" path="res://assets/audio/bgm.mp3" id="10_6geg2"]
 [ext_resource type="Script" uid="uid://cbb77nb0tc5kv" path="res://gameplay/multiplayer_synchronizer.gd" id="11_ament"]
-[ext_resource type="Script" uid="uid://b5rbbae68xg2m" path="res://gameplay/HUD_Manager.gd" id="12_6geg2"]
+[ext_resource type="Script" path="res://gameplay/HUD_Manager.gd" id="12_6geg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)

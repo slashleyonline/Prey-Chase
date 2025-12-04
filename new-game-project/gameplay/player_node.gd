@@ -7,6 +7,7 @@ extends Node2D
 func _enter_tree() -> void:
 	print("new player id: ", name)
 	set_multiplayer_authority(name.to_int(), true)
+	print("root position is: ", global_position)
 
 func _ready() -> void:
 	if is_multiplayer_authority():

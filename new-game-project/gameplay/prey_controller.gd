@@ -25,11 +25,12 @@ var spawn_position = Vector2.ZERO
 func _enter_tree() -> void:
 		set_multiplayer_authority(get_parent().name.to_int(), true)
 		get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
+		print("global pos: ", global_position)
 
 # This is to remember what and where the prey started out as
 func _ready():
 	# Stores the location where the player spawned in the level
-	spawn_position = global_position
+	global_position = spawn_position
 	print("spawn position is: ", spawn_position)
 	
 	original_texture = sprite.texture

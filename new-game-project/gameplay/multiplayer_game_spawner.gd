@@ -28,6 +28,7 @@ func create_game_entry(id: int, scene: PackedScene):
 		return
 	var player: Node = scene.instantiate()
 	var location:Vector2
+	
 	if (scene == scenes[0]):
 		location = prey_spawn.global_position
 		prey_players +=1
@@ -36,8 +37,6 @@ func create_game_entry(id: int, scene: PackedScene):
 		pred_players += 1
 	
 	player.name = str(id)
-	print("player name: ", str(id))
 	player.global_position = location
-	print("location is ", location)
 	get_node(spawn_path).call_deferred("add_child", player)
 	player_spawned.emit(player)

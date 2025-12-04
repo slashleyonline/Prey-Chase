@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=17 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="2_6wcwo"]
-[ext_resource type="Script" uid="uid://chaf12v4j8p1d" path="res://gameplay/basic_level.gd" id="2_dv5lg"]
 [ext_resource type="Texture2D" uid="uid://bnum3cs0d18tb" path="res://assets/tree.png" id="3_o6sg1"]
 [ext_resource type="Texture2D" uid="uid://5w2e7jpmb2hn" path="res://assets/rocks.png" id="4_ament"]
 [ext_resource type="Texture2D" uid="uid://b3b0bredgsobj" path="res://assets/sticks.png" id="5_6geg2"]
@@ -39,7 +38,6 @@ script = ExtResource("1_yo32q")
 
 [node name="BasicLevel" type="Node2D" parent="."]
 position = Vector2(-2, -1)
-script = ExtResource("2_dv5lg")
 
 [node name="Background" type="Node2D" parent="BasicLevel"]
 
@@ -835,7 +833,7 @@ scale = Vector2(0.99831074, 1.0098684)
 polygon = PackedVector2Array(-2, -12, -10, -4, -17, -4, -18, 5, -11, 7, 14, 7, 19, 2, 16, -2, 10, -2, 6, -10)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="BasicLevel"]
-_spawnable_scenes = PackedStringArray("uid://cherrjuypb8dr")
+_spawnable_scenes = PackedStringArray("uid://cherrjuypb8dr", "uid://eopgapenglgf")
 spawn_path = NodePath("..")
 script = ExtResource("9_o6sg1")
 network_player = ExtResource("8_moctb")

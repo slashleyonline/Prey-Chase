@@ -20,6 +20,12 @@ var can_attack = true
 @onready var hitbox = $Hitbox
 @onready var hitbox_shape = $Hitbox/HitboxShape
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(get_parent().name.to_int(), true)
+	get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
+	global_position = Vector2(966,405)
+
+	print("global pos: ", global_position)
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): return

@@ -24,6 +24,9 @@ fill_to = Vector2(0.7905983, 0.20940171)
 properties/0/path = NodePath("CharacterBody2D:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Predator" type="Node2D" groups=["predator"]]
 script = ExtResource("1_2a2dv")

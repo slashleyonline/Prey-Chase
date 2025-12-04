@@ -15,8 +15,7 @@ signal player_spawned
 func determine_team(id: int):
 	print("spawning: ", id)
 	if !multiplayer.is_server(): return
-	create_game_entry(id, scenes[0])
-	return
+
 	if pred_players < prey_players:
 		create_game_entry(id, scenes[1])
 	elif prey_players < pred_players:
@@ -43,6 +42,8 @@ func create_game_entry(id: int, scene: PackedScene):
 		get_node(spawn_path).call_deferred("add_child", player)
 	else:
 		location = pred_spawn.global_position
+		print("pred!")
+		get_node(spawn_path).call_deferred("add_child", player)
 		pred_players += 1
 	print("player spawned")
 	player_spawned.emit(player)

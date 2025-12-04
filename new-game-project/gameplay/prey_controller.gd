@@ -23,14 +23,16 @@ var original_collision_transform = Transform2D.IDENTITY
 var spawn_position = Vector2.ZERO
 
 func _enter_tree() -> void:
-		set_multiplayer_authority(get_parent().name.to_int(), true)
-		get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
-		print("global pos: ", global_position)
+	set_multiplayer_authority(get_parent().name.to_int(), true)
+	get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
+	global_position = Vector2(966,405)
+
+	print("global pos: ", global_position)
 
 # This is to remember what and where the prey started out as
 func _ready():
 	# Stores the location where the player spawned in the level
-	global_position = spawn_position
+	spawn_position = global_position
 	print("spawn position is: ", spawn_position)
 	
 	original_texture = sprite.texture
@@ -43,7 +45,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): return
-	
+	print(global_position)
 	# Stops movement if the game is over
 	if WinCondition.game_active == false:
 		return

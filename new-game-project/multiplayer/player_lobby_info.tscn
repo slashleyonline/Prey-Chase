@@ -58,6 +58,7 @@ offset_top = -11.5
 offset_right = 87.0
 offset_bottom = 12.5
 grow_vertical = 2
+button_pressed = true
 
 [node name="ID" type="Control" parent="."]
 anchors_preset = 0

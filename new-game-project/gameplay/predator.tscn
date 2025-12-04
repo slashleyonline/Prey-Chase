@@ -29,6 +29,8 @@ properties/0/replication_mode = 1
 script = ExtResource("1_2a2dv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["predator"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_addl1")
 
 [node name="PredatorWolf" type="Sprite2D" parent="CharacterBody2D"]

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 NetworkHandler="*res://multiplayer/network_handler.gd"
 WinCondition="*res://gameplay/Win_Condition.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 predator=""
@@ -86,3 +90,4 @@ prey_right={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=18 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
 [ext_resource type="Texture2D" uid="uid://dciwle3an3lgb" path="res://assets/Sprite-0001.png" id="2_6wcwo"]
+[ext_resource type="Script" uid="uid://chaf12v4j8p1d" path="res://gameplay/basic_level.gd" id="2_dv5lg"]
 [ext_resource type="Texture2D" uid="uid://bnum3cs0d18tb" path="res://assets/tree.png" id="3_o6sg1"]
 [ext_resource type="Texture2D" uid="uid://5w2e7jpmb2hn" path="res://assets/rocks.png" id="4_ament"]
 [ext_resource type="Texture2D" uid="uid://b3b0bredgsobj" path="res://assets/sticks.png" id="5_6geg2"]
@@ -10,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cherrjuypb8dr" path="res://gameplay/prey.tscn" id="8_moctb"]
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
 [ext_resource type="AudioStream" uid="uid://cjxu8tqh7eohl" path="res://assets/audio/bgm.mp3" id="10_6geg2"]
-[ext_resource type="Script" uid="uid://cs6djtil4ny0y" path="res://gameplay/background_music.gd" id="10_dv5lg"]
+[ext_resource type="Script" path="res://gameplay/background_music.gd" id="10_dv5lg"]
 [ext_resource type="Script" uid="uid://cbb77nb0tc5kv" path="res://gameplay/multiplayer_synchronizer.gd" id="11_ament"]
-[ext_resource type="Script" path="res://gameplay/HUD_Manager.gd" id="12_6geg2"]
+[ext_resource type="Script" uid="uid://b5rbbae68xg2m" path="res://gameplay/HUD_Manager.gd" id="12_6geg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)
@@ -38,6 +39,7 @@ script = ExtResource("1_yo32q")
 
 [node name="BasicLevel" type="Node2D" parent="."]
 position = Vector2(-2, -1)
+script = ExtResource("2_dv5lg")
 
 [node name="Background" type="Node2D" parent="BasicLevel"]
 

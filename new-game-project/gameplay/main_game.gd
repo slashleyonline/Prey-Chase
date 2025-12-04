@@ -7,9 +7,9 @@ func _on_lobby_game_begin() -> void:
 	var game_main = $BasicLevel
 	game_lobby.visible = false
 	game_main.visible = true
-	print(multiplayer.get_peers())
 	var final_peers_list = multiplayer.get_peers()
 	final_peers_list.append(1)
+	print(final_peers_list)
 	spawn_all_players(final_peers_list)
 
 func spawn_all_players(array: PackedInt32Array):

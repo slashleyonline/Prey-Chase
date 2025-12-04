@@ -22,11 +22,15 @@ var original_collision_transform = Transform2D.IDENTITY
 # Variable to remember where to respawn
 var spawn_position = Vector2.ZERO
 
+func _enter_tree() -> void:
+		set_multiplayer_authority(get_parent().name.to_int(), true)
+		get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
 
 # This is to remember what and where the prey started out as
 func _ready():
 	# Stores the location where the player spawned in the level
 	spawn_position = global_position
+	print("spawn position is: ", spawn_position)
 	
 	original_texture = sprite.texture
 	original_color = sprite.modulate

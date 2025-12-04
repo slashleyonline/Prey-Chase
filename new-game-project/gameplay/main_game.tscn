@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cir4maq7udyt7"]
+[gd_scene load_steps=16 format=3 uid="uid://cir4maq7udyt7"]
 
 [ext_resource type="Script" uid="uid://6hbisgimnjti" path="res://gameplay/main_game.gd" id="1_yo32q"]
 [ext_resource type="PackedScene" uid="uid://bun1feb7ncpke" path="res://multiplayer/lobby.tscn" id="2_6w4jh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cnemyqix6vsql" path="res://gameplay/multiplayer_game_spawner.gd" id="9_o6sg1"]
 [ext_resource type="AudioStream" uid="uid://cjxu8tqh7eohl" path="res://assets/audio/bgm.mp3" id="10_6geg2"]
 [ext_resource type="Script" uid="uid://cbb77nb0tc5kv" path="res://gameplay/multiplayer_synchronizer.gd" id="11_ament"]
+[ext_resource type="Script" uid="uid://b5rbbae68xg2m" path="res://gameplay/HUD_Manager.gd" id="12_6geg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3wy8"]
 size = Vector2(16, 90)
@@ -880,6 +881,23 @@ color = Color(0, 0, 0, 1)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6w4jh")
 script = ExtResource("11_ament")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("12_6geg2")
+
+[node name="Kills" type="Label" parent="CanvasLayer"]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 49.0
+offset_bottom = 19.0
+text = "Kills: 0"
+
+[node name="Timer" type="Label" parent="CanvasLayer"]
+offset_left = 1044.0
+offset_top = -4.0
+offset_right = 1153.0
+offset_bottom = 19.0
+text = "Time Left: 100"
 
 [connection signal="player_spawned" from="BasicLevel/MultiplayerSpawner" to="MultiplayerSynchronizer" method="_on_multiplayer_spawner_player_spawned"]
 [connection signal="game_begin" from="Lobby" to="." method="_on_lobby_game_begin"]

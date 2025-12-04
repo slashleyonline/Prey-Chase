@@ -8,6 +8,9 @@ var kill_count = 0
 var game_active = true
 
 func _ready():
+	start_game()
+
+func start_game():
 	current_time = time_limit
 	kill_count = 0
 	game_active = true
@@ -23,6 +26,7 @@ func _process(delta):
 	
 	# Checks if Time ran out
 	if current_time <= 0:
+		current_time = 0
 		game_over("Prey Wins! (Time Survived)")
 
 func register_death():
@@ -40,4 +44,11 @@ func register_death():
 func game_over(winner_message):
 	game_active = false
 	print("GAME OVER: " + winner_message)
+	
+	print("Restarting in 5 seconds...")
+	
+	# Wait for 5 seconds then restarts the scene
+	await get_tree().create_timer(5.0).timeout
+	start_game()
+	get_tree().reload_current_scene()
 	

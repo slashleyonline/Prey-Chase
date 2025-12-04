@@ -21,7 +21,7 @@ func check_container():
 			count += 1
 	var total = container.get_children().size()
 	
-	if count == total && (count <= 2):
+	if count == total && ((count == 1) or (count % 2 == 0)):
 		return true
 	else: 
 		return false

@@ -45,7 +45,6 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): return
-	print(global_position)
 	# Stops movement if the game is over
 	if WinCondition.game_active == false:
 		return

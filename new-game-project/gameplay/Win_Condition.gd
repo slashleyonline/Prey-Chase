@@ -3,13 +3,11 @@ extends Node
 var time_limit = 100.0
 var kills_needed_to_lose = 3
 
-var current_time = 0.0
+var current_time = 100.0
 var kill_count = 0
-var game_active = true
+var game_active = false
 
-func _ready():
-	start_game()
-
+@rpc("any_peer", "call_local")
 func start_game():
 	current_time = time_limit
 	kill_count = 0
@@ -44,11 +42,10 @@ func register_death():
 func game_over(winner_message):
 	game_active = false
 	print("GAME OVER: " + winner_message)
-	
 	print("Restarting in 5 seconds...")
-	
+	current_time = 0
 	# Wait for 5 seconds then restarts the scene
 	await get_tree().create_timer(5.0).timeout
 	start_game()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://start_menu.tscn")
 	

@@ -6,6 +6,7 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(1)
 
 func _on_lobby_game_begin() -> void:
+	WinCondition.rpc("start_game")
 	var game_lobby = $Lobby
 	var game_main = $BasicLevel
 	game_lobby.visible = false

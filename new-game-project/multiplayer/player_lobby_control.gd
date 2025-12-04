@@ -7,6 +7,7 @@ var game_id
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 	set_label(int(name))
+
 func _ready() -> void:
 	ready_play = check.button_pressed
 
@@ -18,3 +19,7 @@ func set_label(id: int):
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	ready_play = toggled_on
+
+@rpc("any_peer", "call_local")
+func get_time():
+	return WinCondition.current_time

@@ -23,7 +23,7 @@ var can_attack = true
 func _enter_tree() -> void:
 	set_multiplayer_authority(get_parent().name.to_int(), true)
 	get_parent().set_multiplayer_authority(get_parent().name.to_int(), true)
-	global_position = Vector2(900,400)
+	global_position = Vector2(100,100)
 
 	print("global pos: ", global_position)
 

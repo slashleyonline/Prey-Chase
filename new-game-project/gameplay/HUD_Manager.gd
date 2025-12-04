@@ -11,5 +11,5 @@ func _process(_delta):
 	# Updates the kills score
 	kill_text.text = "Kills: " + str(WinCondition.kill_count)
 	
-	if WinCondition.game_active == false:
+	if WinCondition.game_active == false and WinCondition.current_time == 0:
 		timer_text.text = "GAME OVER"
